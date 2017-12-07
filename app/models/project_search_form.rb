@@ -18,21 +18,20 @@ class ProjectSearchForm
         conditions << "customers.name ILIKE :keyword"
       end
       if target_none? || member_selected?
-        condition = <<~SQL
+        conditions << <<~SQL
           EXISTS(
             SELECT *
-            FROM
-              memberships ms
-              INNER JOIN members m
-                ON m.id = ms.member_id
+            FROM memberships ms
+            INNER JOIN members m
+              ON m.id = ms.member_id
             WHERE
-              ms.project_id = projects.id
-            AND m.name ILIKE :keyword)
+                ms.project_id = projects.id
+            AND m.name ILIKE :keyword
+          )
         SQL
-        conditions << condition
       end
-      condition = "(#{conditions.join(" OR ")})"
-      scope = scope.where(condition, keyword: "%#{keyword}%")
+      sql = "(#{conditions.join(" OR ")})"
+      scope = scope.where(sql, keyword: "%#{keyword}%")
     end
 
     scope
