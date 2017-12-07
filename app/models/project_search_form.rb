@@ -15,16 +15,16 @@ class ProjectSearchForm
     scope = Project.all
 
     if keyword.present?
-      keyword_conditions = []
+      conditions = []
       if target_none? || project_selected?
-        keyword_conditions << "projects.name ILIKE :keyword"
+        conditions << "projects.name ILIKE :keyword"
       end
       if target_none? || customer_selected?
         scope = scope.joins(:customer)
-        keyword_conditions << "customers.name ILIKE :keyword"
+        conditions << "customers.name ILIKE :keyword"
       end
       if target_none? || member_selected?
-        sql = <<~SQL
+        condition = <<~SQL
           EXISTS(
             SELECT *
             FROM
@@ -35,10 +35,10 @@ class ProjectSearchForm
               ms.project_id = projects.id
             AND m.name ILIKE :keyword)
         SQL
-        keyword_conditions << sql
+        conditions << condition
       end
-      sql = "(#{keyword_conditions.join(" OR ")})"
-      scope = scope.where(sql, keyword: "%#{keyword}%")
+      condition = "(#{conditions.join(" OR ")})"
+      scope = scope.where(condition, keyword: "%#{keyword}%")
     end
 
     scope
