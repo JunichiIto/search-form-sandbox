@@ -1,54 +1,48 @@
-<h1>プロジェクト一覧</h1>
+<h4>プロジェクト一覧</h4>
 
-<%= form_with(model: @project_search_form, url: root_path, method: :get, local: true) do |f| %>
-  <div class="input-group">
-    <div class="keyword-group">
-      <div class="form-group">
-        <%= f.label :keyword, 'キーワード' %>
-        <%= f.text_field :keyword, id: 'project_search_form_keyword' %>
-      </div>
-      <p>検索対象</p>
-      <div class="form-group">
-        <label>
-          <%= f.check_box :project %>
-          プロジェクト名
-        </label>
-      </div>
-      <div class="form-group">
-        <label>
-          <%= f.check_box :customer %>
-          顧客名
-        </label>
-      </div>
-      <div class="form-group">
-        <label>
-          <%= f.check_box :member %>
-          メンバー名
-        </label>
-      </div>
+<%= form_with(model: @project_search_form, url: root_path, method: :get, local: true, class: 'form-inline') do |f| %>
+  <div class="form-group">
+    <%= f.label :keyword, 'キーワード', class: 'form-label' %>
+    <%= f.text_field :keyword, id: 'project_search_form_keyword', class: 'form-control' %>
+  </div>
+  <div class="keyword-targets">
+    <p class="form-label">検索対象</p>
+    <div class="form-group">
+      <label class="target-label">
+        <%= f.check_box :project %>
+        プロジェクト名
+      </label>
+      <label class="target-label">
+        <%= f.check_box :customer %>
+        顧客名
+      </label>
+      <label class="target-label">
+        <%= f.check_box :member %>
+        メンバー名
+      </label>
     </div>
+  </div>
 
-    <div class="member-count-group">
-      <p>メンバー数</p>
+  <div class="member-count">
+    <p class="form-label">メンバー数</p>
+    <div class="form-group">
       <% ProjectSearchForm::MEMBER_COUNT_OPTIONS.each do |key, label| %>
-        <div class="form-group">
-          <label>
-            <%= f.radio_button :member_count, key %>
-            <%= label %>
-          </label>
-        </div>
+        <label class="count-label">
+          <%= f.radio_button :member_count, key %>
+          <%= label %>
+        </label>
       <% end %>
     </div>
   </div>
 
   <div class="form-actions">
-    <input type="submit" value="検索" class="square_btn">
+    <input type="submit" value="検索" class="btn btn-primary">
   </div>
 <% end %>
 
-<table>
+<table class="table table-bordered">
   <thead>
-    <tr>
+    <tr class="info">
       <td>顧客名</td>
       <td>プロジェクト名</td>
       <td>メンバー数</td>

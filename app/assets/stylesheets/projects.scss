@@ -1,56 +1,22 @@
-// Place all the styles related to the projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-body {
-  font-family: sans-serif;
-}
-
-h1 {
-  font-size: 20px;
-}
-
-table {
-  border-collapse: collapse;
-  text-align: left;
-  line-height: 1.5;
-}
-table th {
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  border: 1px solid #ccc;
-}
-table td {
-  padding: 10px;
-  vertical-align: top;
-  border: 1px solid #ccc;
-}
-
-.input-group {
-  display: table;
-}
-
-.keyword-group, .member-count-group {
-  display: table-cell;
-  margin: 10px 0;
-  padding: 10px 50px 10px 0;
-  p {
-    margin: 0;
+form {
+  margin: 23px 0;
+  label {
+    font-weight: normal;
   }
-}
-
-.form-actions {
-  margin: 10px 0;
-}
-
-// https://saruwakakun.com/html-css/reference/buttons
-.square_btn{
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  background: #668ad8;/*ボタン色*/
-  color: #FFF;
-  border-radius: 3px;
-  font-size: 14px;
+  p {
+    display: inline-block;
+  }
+  .form-label {
+    width: 80px;
+    font-weight: bold;
+  }
+  .target-label, .count-label {
+    margin-right: 5px;
+  }
+  .keyword-targets {
+    margin-top: 8px;
+  }
+  .member-count {
+    margin: 10px 0;
+  }
 }
