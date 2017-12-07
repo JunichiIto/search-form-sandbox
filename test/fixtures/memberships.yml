@@ -1,9 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  project: one
-  member: one
+tanaka_alice:
+  project: tanaka_project
+  member: alice
 
-two:
-  project: two
-  member: two
+tanaka_bob:
+  project: tanaka_project
+  member: bob
+
+suzuki_carol:
+  project: suzuki_project
+  member: carol
+
+suzuki_dave:
+  project: suzuki_project
+  member: dave
+
+suzuki_alice:
+  project: suzuki_project
+  member: alice
