@@ -68,4 +68,30 @@ class ProjectsTest < ApplicationSystemTestCase
     assert_no_content '田中工業'
     assert_content '鈴木建設', count: 1
   end
+
+  test '複合検索' do
+    visit root_path
+    assert_content '田中工業', count: 1
+    assert_content '鈴木建設', count: 1
+
+    fill_in 'キーワード', with: 'Alice'
+    click_button '検索'
+    assert_content '田中工業', count: 1
+    assert_content '鈴木建設', count: 1
+
+    choose '3人'
+    click_button '検索'
+    assert_no_content '田中工業'
+    assert_content '鈴木建設', count: 1
+
+    check 'プロジェクト名'
+    click_button '検索'
+    assert_no_content '田中工業'
+    assert_no_content '鈴木建設'
+
+    fill_in 'キーワード', with: 'プロジェクト'
+    click_button '検索'
+    assert_no_content '田中工業'
+    assert_content '鈴木建設', count: 1
+  end
 end
