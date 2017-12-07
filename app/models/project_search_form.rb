@@ -3,10 +3,10 @@ class ProjectSearchForm
 
   KEYWORD_TARGETS = %w(project customer member).freeze
   MEMBER_COUNT_OPTIONS = {
-      'none' => '指定無し',
-      'one' => '1人',
-      'two' => '2人',
-      'three' => '3人',
+      '' => '指定無し',
+      '1' => '1人',
+      '2' => '2人',
+      '3' => '3人',
   }.freeze
 
   attr_accessor :keyword, *KEYWORD_TARGETS, :member_count
@@ -41,11 +41,25 @@ class ProjectSearchForm
       scope = scope.where(condition, keyword: "%#{keyword}%")
     end
 
-    scope
-  end
+    if member_count.present?
+      count = member_count.to_i
+      join_sql = <<~SQL
+        INNER JOIN (
+          SELECT
+            p.id AS project_id,
+            COUNT(*) AS member_count
+          FROM projects p 
+          INNER JOIN memberships m
+            ON m.project_id = p.id
+          GROUP BY
+            p.id
+        ) AS member_counts
+        ON member_counts.project_id = projects.id
+      SQL
+      scope = scope.joins(join_sql).where("member_counts.member_count = ?", count)
+    end
 
-  def set_defaults
-    self.member_count ||= 'none'
+    scope
   end
 
   private
