@@ -1,6 +1,6 @@
 <h1>プロジェクト一覧</h1>
 
-<%= form_with(model: @project_search_form, url: root_path, method: :get) do |f| %>
+<%= form_with(model: @project_search_form, url: root_path, method: :get, local: true) do |f| %>
   <div class="input-group">
     <div class="keyword-group">
       <div class="form-group">
