@@ -23,18 +23,6 @@
     </div>
   </div>
 
-  <div class="member-count">
-    <p class="form-label">メンバー数</p>
-    <div class="form-group">
-      <% ProjectSearchForm::MEMBER_COUNT_OPTIONS.each do |key, label| %>
-        <label class="count-label">
-          <%= f.radio_button :member_count, key %>
-          <%= label %>
-        </label>
-      <% end %>
-    </div>
-  </div>
-
   <div class="form-actions">
     <input type="submit" value="検索" class="btn btn-primary">
   </div>
@@ -45,7 +33,6 @@
     <tr class="info">
       <td>顧客名</td>
       <td>プロジェクト名</td>
-      <td>メンバー数</td>
       <td>メンバー名</td>
     </tr>
   </thead>
@@ -54,7 +41,6 @@
       <tr>
         <td><%= project.customer.name %></td>
         <td><%= project.name %></td>
-        <td><%= project.member_count %></td>
         <td><%= project.member_names.join(', ') %></td>
       </tr>
     <% end %>

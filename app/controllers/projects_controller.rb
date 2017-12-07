@@ -7,6 +7,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_search_form_params
-    params.fetch(:project_search_form, {}).permit(:keyword, :project, :customer, :member, :member_count)
+    params.fetch(:project_search_form, {}).permit(:keyword, :project, :customer, :member)
   end
 end

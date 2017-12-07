@@ -5,10 +5,6 @@ class Project < ApplicationRecord
 
   validates :name, presence: true
 
-  def member_count
-    members.count
-  end
-
   def member_names
     members.order(:name).map(&:name)
   end
