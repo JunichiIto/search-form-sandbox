@@ -26,3 +26,31 @@ table td {
   vertical-align: top;
   border: 1px solid #ccc;
 }
+
+.input-group {
+  display: table;
+}
+
+.keyword-group, .member-count-group {
+  display: table-cell;
+  margin: 10px 0;
+  padding: 10px 50px 10px 0;
+  p {
+    margin: 0;
+  }
+}
+
+.form-actions {
+  margin: 10px 0;
+}
+
+// https://saruwakakun.com/html-css/reference/buttons
+.square_btn{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-radius: 3px;
+  font-size: 14px;
+}

@@ -1,4 +1,50 @@
-<h1>Projects#index</h1>
+<h1>プロジェクト一覧</h1>
+
+<%= form_with(model: @project_search_form, url: root_path, method: :get) do |f| %>
+  <div class="input-group">
+    <div class="keyword-group">
+      <div class="form-group">
+        <%= f.label :keyword, 'キーワード' %>
+        <%= f.text_field :keyword, id: 'project_search_form_keyword' %>
+      </div>
+      <p>検索対象</p>
+      <div class="form-group">
+        <label>
+          <%= f.check_box :project %>
+          プロジェクト名
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          <%= f.check_box :customer %>
+          顧客名
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          <%= f.check_box :member %>
+          メンバー名
+        </label>
+      </div>
+    </div>
+
+    <div class="member-count-group">
+      <p>メンバー数</p>
+      <% ProjectSearchForm::MEMBER_COUNT_OPTIONS.each do |key, label| %>
+        <div class="form-group">
+          <label>
+            <%= f.radio_button :member_count, key %>
+            <%= label %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <input type="submit" value="検索" class="square_btn">
+  </div>
+<% end %>
 
 <table>
   <thead>
