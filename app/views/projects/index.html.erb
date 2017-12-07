@@ -1,0 +1,22 @@
+<h1>Projects#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>顧客名</td>
+      <td>プロジェクト名</td>
+      <td>メンバー数</td>
+      <td>メンバー名</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.customer.name %></td>
+        <td><%= project.name %></td>
+        <td><%= project.member_count %></td>
+        <td><%= project.member_names.join(', ') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
