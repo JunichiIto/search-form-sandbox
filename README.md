@@ -9,6 +9,10 @@ Sample app for complex search conditions.
 - Runs on PostgreSQL
 - Execute `rails db:fixtures:load` to load sample data
 
+## See also
+
+- [Rails❤️SQL \#railsdm // Speaker Deck](https://speakerdeck.com/jnchito/rails-sql-number-railsdm)
+
 ## License
 
 MIT License.
