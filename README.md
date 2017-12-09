@@ -6,7 +6,8 @@ Sample app for complex search conditions.
 
 ## Notes
 
-- Run on PostgreSQL
+- Runs on PostgreSQL
+- Execute `rails db:fixtures:load` to load sample data
 
 ## License
 
